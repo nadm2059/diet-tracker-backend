@@ -1,0 +1,18 @@
+<h2>Welcome, {{ current_user.username }}</h2>
+<p>Total: {{ total }} | Remaining: {{ remaining }}</p>
+
+<form method="POST">
+    <input name="meal" placeholder="Meal name">
+    <input name="calories" type="number" placeholder="Calories">
+    <button>Add Meal</button>
+</form>
+
+<ul>
+    {% for meal in meals %}
+        <li>{{ meal.name }} - {{ meal.calories }} kcal</li>
+    {% endfor %}
+</ul>
+
+<canvas id="chart"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
