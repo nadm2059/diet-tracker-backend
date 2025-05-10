@@ -1,3 +1,7 @@
+from flask_cors import CORS
+
+CORS(app, supports_credentials=True)
+
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, login_required, logout_user, UserMixin, current_user
@@ -6,6 +10,10 @@ from datetime import datetime
 import os
 
 app = Flask(__name__)
+app.config.update(
+    SESSION_COOKIE_SAMESITE="None",
+    SESSION_COOKIE_SECURE=True
+)
 app.secret_key = os.getenv("SECRET_KEY", "your_secret")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///diet.db'
 db = SQLAlchemy(app)
