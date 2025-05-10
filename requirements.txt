@@ -1,5 +1,6 @@
+gunicorn
+flask-cors
 flask
 flask-login
 flask-sqlalchemy
-gunicorn
 werkzeug
